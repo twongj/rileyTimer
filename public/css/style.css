@@ -1,0 +1,15 @@
+.centered {
+    text-align:center;
+}
+
+#scramble {
+    font-size:16pt;
+}
+
+#timerDisplay {
+    font-size:96pt;
+}
+
+.table-times {
+    height:calc(100vh - 200px);
+}
