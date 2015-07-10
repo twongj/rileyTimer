@@ -1,6 +1,10 @@
-var app = angular.module('rileyApp', [])
+var app = angular.module('rileyApp', ['ui.bootstrap']);
 
-app.controller('rileyController', function($scope, $interval, $http) {
+app.controller('rileyController', function($scope, $interval, $http, $log) {
+
+    $scope.scrambleTypes = ['Rubik\'s Cube', '4x4 Cube', '5x5 Cube', '2x2 Cube'];
+
+    $scope.sessions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
     // solves
     $http.get('/solves').success(function(response) {
