@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Bootstrap -->
+    <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <!-- jQuery -->
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <!-- BootstrapJS -->
+    <script src="js/bootstrap.min.js"></script>
     <!-- AngularJS -->
     <script src="js/angular.min.js"></script>
+    <!-- ui.bootstrap -->
+    <script src="js/ui-bootstrap-tpls-0.13.0.min.js"></script>
     <!-- Local -->
     <script src="js/app.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -13,88 +19,106 @@
     <title>rileyTimer</title>
 </head>
 <body ng-app="rileyApp" ng-controller="rileyController" ng-keydown="keydown($event)" ng-keyup="keyup($event)">
-<div class="container">
-    <div class="page-header">
-        <h1>rileyTimer</h1>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <h3 id="title">rileyTimer</h3>
     </div>
+</nav>
+<div class="container-fluid">
     <div class="row">
         <div class="col-xs-8 centered">
+            <!--<div class="btn-group btn-options" dropdown is-open="scrambleType.isopen">-->
+                <!--<button type="button" class="btn btn-sm btn-default dropdown-toggle" dropdown-toggle>-->
+                    <!--Scramble Type <span class="caret"></span>-->
+                <!--</button>-->
+                <!--<ul class="dropdown-menu" role="menu">-->
+                    <!--<li ng-repeat="scrambleType in scrambleTypes"><a href="#" ng-bind="scrambleType"></a></li>-->
+                <!--</ul>-->
+            <!--</div>-->
+            <!--<div class="btn-group btn-options" dropdown is-open="sessions.isopen">-->
+                <!--<button type="button" class="btn btn-sm btn-default dropdown-toggle" dropdown-toggle>-->
+                    <!--Session <span class="caret"></span>-->
+                <!--</button>-->
+                <!--<ul class="dropdown-menu" role="menu">-->
+                    <!--<li ng-repeat="session in sessions"><a href="#" ng-bind="'Session ' + session"></a></li>-->
+                <!--</ul>-->
+            <!--</div>-->
             <p id="scramble" ng-bind="scramble"></p>
             <p id="timerDisplay" ng-style="timerStyle" ng-bind="timerDisplay"></p>
-            <svg width="500" height="375">
-                <g transform="translate(5, 5)">
-                    <g transform="translate(0, 125)" style="stroke:black">
-                        <rect x="0" y="0" rx="2" ry="2" width="35" height="35" style="fill:{{cub.LBU}}"></rect>
-                        <rect x="0" y="40" rx="2" ry="2" width="35" height="35" style="fill:{{cub.LB}}"></rect>
-                        <rect x="0" y="80" rx="2" ry="2" width="35" height="35" style="fill:{{cub.LDB}}"></rect>
-                        <rect x="40" y="0" rx="2" ry="2" width="35" height="35" style="fill:{{cub.LU}}"></rect>
-                        <rect x="40" y="40" rx="2" ry="2" width="35" height="35" style="fill:{{cub.L}}"></rect>
-                        <rect x="40" y="80" rx="2" ry="2" width="35" height="35" style="fill:{{cub.LD}}"></rect>
-                        <rect x="80" y="0" rx="2" ry="2" width="35" height="35" style="fill:{{cub.LUF}}"></rect>
-                        <rect x="80" y="40" rx="2" ry="2" width="35" height="35" style="fill:{{cub.LF}}"></rect>
-                        <rect x="80" y="80" rx="2" ry="2" width="35" height="35" style="fill:{{cub.LFD}}"></rect>
+            <svg width="313" height="235">
+                <g transform="translate(3, 3)">
+                    <g transform="translate(0, 78)" style="stroke:black">
+                        <rect x="0" y="0" rx="1" ry="1" width="23" height="23" style="fill:{{cub.LBU}}"></rect>
+                        <rect x="0" y="25" rx="1" ry="1" width="23" height="23" style="fill:{{cub.LB}}"></rect>
+                        <rect x="0" y="50" rx="1" ry="1" width="23" height="23" style="fill:{{cub.LDB}}"></rect>
+                        <rect x="25" y="0" rx="1" ry="1" width="23" height="23" style="fill:{{cub.LU}}"></rect>
+                        <rect x="25" y="25" rx="1" ry="1" width="23" height="23" style="fill:{{cub.L}}"></rect>
+                        <rect x="25" y="50" rx="1" ry="1" width="23" height="23" style="fill:{{cub.LD}}"></rect>
+                        <rect x="50" y="0" rx="1" ry="1" width="23" height="23" style="fill:{{cub.LUF}}"></rect>
+                        <rect x="50" y="25" rx="1" ry="1" width="23" height="23" style="fill:{{cub.LF}}"></rect>
+                        <rect x="50" y="50" rx="1" ry="1" width="23" height="23" style="fill:{{cub.LFD}}"></rect>
                     </g>
-                    <g transform="translate(125, 125)" style="stroke:black">
-                        <rect x="0" y="0" rx="2" ry="2" width="35" height="35" style="fill:{{cub.FLU}}"></rect>
-                        <rect x="0" y="40" rx="2" ry="2" width="35" height="35" style="fill:{{cub.FL}}"></rect>
-                        <rect x="0" y="80" rx="2" ry="2" width="35" height="35" style="fill:{{cub.FDL}}"></rect>
-                        <rect x="40" y="0" rx="2" ry="2" width="35" height="35" style="fill:{{cub.FU}}"></rect>
-                        <rect x="40" y="40" rx="2" ry="2" width="35" height="35" style="fill:{{cub.F}}"></rect>
-                        <rect x="40" y="80" rx="2" ry="2" width="35" height="35" style="fill:{{cub.FD}}"></rect>
-                        <rect x="80" y="0" rx="2" ry="2" width="35" height="35" style="fill:{{cub.FUR}}"></rect>
-                        <rect x="80" y="40" rx="2" ry="2" width="35" height="35" style="fill:{{cub.FR}}"></rect>
-                        <rect x="80" y="80" rx="2" ry="2" width="35" height="35" style="fill:{{cub.FRD}}"></rect>
+                    <g transform="translate(78, 78)" style="stroke:black">
+                        <rect x="0" y="0" rx="1" ry="1" width="23" height="23" style="fill:{{cub.FLU}}"></rect>
+                        <rect x="0" y="25" rx="1" ry="1" width="23" height="23" style="fill:{{cub.FL}}"></rect>
+                        <rect x="0" y="50" rx="1" ry="1" width="23" height="23" style="fill:{{cub.FDL}}"></rect>
+                        <rect x="25" y="0" rx="1" ry="1" width="23" height="23" style="fill:{{cub.FU}}"></rect>
+                        <rect x="25" y="25" rx="1" ry="1" width="23" height="23" style="fill:{{cub.F}}"></rect>
+                        <rect x="25" y="50" rx="1" ry="1" width="23" height="23" style="fill:{{cub.FD}}"></rect>
+                        <rect x="50" y="0" rx="1" ry="1" width="23" height="23" style="fill:{{cub.FUR}}"></rect>
+                        <rect x="50" y="25" rx="1" ry="1" width="23" height="23" style="fill:{{cub.FR}}"></rect>
+                        <rect x="50" y="50" rx="1" ry="1" width="23" height="23" style="fill:{{cub.FRD}}"></rect>
                     </g>
-                    <g transform="translate(250, 125)" style="stroke:black">
-                        <rect x="0" y="0" rx="2" ry="2" width="35" height="35" style="fill:{{cub.RFU}}"></rect>
-                        <rect x="0" y="40" rx="2" ry="2" width="35" height="35" style="fill:{{cub.RF}}"></rect>
-                        <rect x="0" y="80" rx="2" ry="2" width="35" height="35" style="fill:{{cub.RDF}}"></rect>
-                        <rect x="40" y="0" rx="2" ry="2" width="35" height="35" style="fill:{{cub.RU}}"></rect>
-                        <rect x="40" y="40" rx="2" ry="2" width="35" height="35" style="fill:{{cub.R}}"></rect>
-                        <rect x="40" y="80" rx="2" ry="2" width="35" height="35" style="fill:{{cub.RD}}"></rect>
-                        <rect x="80" y="0" rx="2" ry="2" width="35" height="35" style="fill:{{cub.RUB}}"></rect>
-                        <rect x="80" y="40" rx="2" ry="2" width="35" height="35" style="fill:{{cub.RB}}"></rect>
-                        <rect x="80" y="80" rx="2" ry="2" width="35" height="35" style="fill:{{cub.RBD}}"></rect>
+                    <g transform="translate(156, 78)" style="stroke:black">
+                        <rect x="0" y="0" rx="1" ry="1" width="23" height="23" style="fill:{{cub.RFU}}"></rect>
+                        <rect x="0" y="25" rx="1" ry="1" width="23" height="23" style="fill:{{cub.RF}}"></rect>
+                        <rect x="0" y="50" rx="1" ry="1" width="23" height="23" style="fill:{{cub.RDF}}"></rect>
+                        <rect x="25" y="0" rx="1" ry="1" width="23" height="23" style="fill:{{cub.RU}}"></rect>
+                        <rect x="25" y="25" rx="1" ry="1" width="23" height="23" style="fill:{{cub.R}}"></rect>
+                        <rect x="25" y="50" rx="1" ry="1" width="23" height="23" style="fill:{{cub.RD}}"></rect>
+                        <rect x="50" y="0" rx="1" ry="1" width="23" height="23" style="fill:{{cub.RUB}}"></rect>
+                        <rect x="50" y="25" rx="1" ry="1" width="23" height="23" style="fill:{{cub.RB}}"></rect>
+                        <rect x="50" y="50" rx="1" ry="1" width="23" height="23" style="fill:{{cub.RBD}}"></rect>
                     </g>
-                    <g transform="translate(375, 125)" style="stroke:black">
-                        <rect x="0" y="0" rx="2" ry="2" width="35" height="35" style="fill:{{cub.BRU}}"></rect>
-                        <rect x="0" y="40" rx="2" ry="2" width="35" height="35" style="fill:{{cub.BR}}"></rect>
-                        <rect x="0" y="80" rx="2" ry="2" width="35" height="35" style="fill:{{cub.BDR}}"></rect>
-                        <rect x="40" y="0" rx="2" ry="2" width="35" height="35" style="fill:{{cub.BU}}"></rect>
-                        <rect x="40" y="40" rx="2" ry="2" width="35" height="35" style="fill:{{cub.B}}"></rect>
-                        <rect x="40" y="80" rx="2" ry="2" width="35" height="35" style="fill:{{cub.BD}}"></rect>
-                        <rect x="80" y="0" rx="2" ry="2" width="35" height="35" style="fill:{{cub.BUL}}"></rect>
-                        <rect x="80" y="40" rx="2" ry="2" width="35" height="35" style="fill:{{cub.BL}}"></rect>
-                        <rect x="80" y="80" rx="2" ry="2" width="35" height="35" style="fill:{{cub.BLD}}"></rect>
+                    <g transform="translate(234, 78)" style="stroke:black">
+                        <rect x="0" y="0" rx="1" ry="1" width="23" height="23" style="fill:{{cub.BRU}}"></rect>
+                        <rect x="0" y="25" rx="1" ry="1" width="23" height="23" style="fill:{{cub.BR}}"></rect>
+                        <rect x="0" y="50" rx="1" ry="1" width="23" height="23" style="fill:{{cub.BDR}}"></rect>
+                        <rect x="25" y="0" rx="1" ry="1" width="23" height="23" style="fill:{{cub.BU}}"></rect>
+                        <rect x="25" y="25" rx="1" ry="1" width="23" height="23" style="fill:{{cub.B}}"></rect>
+                        <rect x="25" y="50" rx="1" ry="1" width="23" height="23" style="fill:{{cub.BD}}"></rect>
+                        <rect x="50" y="0" rx="1" ry="1" width="23" height="23" style="fill:{{cub.BUL}}"></rect>
+                        <rect x="50" y="25" rx="1" ry="1" width="23" height="23" style="fill:{{cub.BL}}"></rect>
+                        <rect x="50" y="50" rx="1" ry="1" width="23" height="23" style="fill:{{cub.BLD}}"></rect>
                     </g>
-                    <g transform="translate(125, 0)" style="stroke:black">
-                        <rect x="0" y="0" rx="2" ry="2" width="35" height="35" style="fill:{{cub.ULB}}"></rect>
-                        <rect x="0" y="40" rx="2" ry="2" width="35" height="35" style="fill:{{cub.UL}}"></rect>
-                        <rect x="0" y="80" rx="2" ry="2" width="35" height="35" style="fill:{{cub.UFL}}"></rect>
-                        <rect x="40" y="0" rx="2" ry="2" width="35" height="35" style="fill:{{cub.UB}}"></rect>
-                        <rect x="40" y="40" rx="2" ry="2" width="35" height="35" style="fill:{{cub.U}}"></rect>
-                        <rect x="40" y="80" rx="2" ry="2" width="35" height="35" style="fill:{{cub.UF}}"></rect>
-                        <rect x="80" y="0" rx="2" ry="2" width="35" height="35" style="fill:{{cub.UBR}}"></rect>
-                        <rect x="80" y="40" rx="2" ry="2" width="35" height="35" style="fill:{{cub.UR}}"></rect>
-                        <rect x="80" y="80" rx="2" ry="2" width="35" height="35" style="fill:{{cub.URF}}"></rect>
+                    <g transform="translate(78, 0)" style="stroke:black">
+                        <rect x="0" y="0" rx="1" ry="1" width="23" height="23" style="fill:{{cub.ULB}}"></rect>
+                        <rect x="0" y="25" rx="1" ry="1" width="23" height="23" style="fill:{{cub.UL}}"></rect>
+                        <rect x="0" y="50" rx="1" ry="1" width="23" height="23" style="fill:{{cub.UFL}}"></rect>
+                        <rect x="25" y="0" rx="1" ry="1" width="23" height="23" style="fill:{{cub.UB}}"></rect>
+                        <rect x="25" y="25" rx="1" ry="1" width="23" height="23" style="fill:{{cub.U}}"></rect>
+                        <rect x="25" y="50" rx="1" ry="1" width="23" height="23" style="fill:{{cub.UF}}"></rect>
+                        <rect x="50" y="0" rx="1" ry="1" width="23" height="23" style="fill:{{cub.UBR}}"></rect>
+                        <rect x="50" y="25" rx="1" ry="1" width="23" height="23" style="fill:{{cub.UR}}"></rect>
+                        <rect x="50" y="50" rx="1" ry="1" width="23" height="23" style="fill:{{cub.URF}}"></rect>
                     </g>
-                    <g transform="translate(125, 250)" style="stroke:black">
-                        <rect x="0" y="0" rx="2" ry="2" width="35" height="35" style="fill:{{cub.DLF}}"></rect>
-                        <rect x="0" y="40" rx="2" ry="2" width="35" height="35" style="fill:{{cub.DL}}"></rect>
-                        <rect x="0" y="80" rx="2" ry="2" width="35" height="35" style="fill:{{cub.DBL}}"></rect>
-                        <rect x="40" y="0" rx="2" ry="2" width="35" height="35" style="fill:{{cub.DF}}"></rect>
-                        <rect x="40" y="40" rx="2" ry="2" width="35" height="35" style="fill:{{cub.D}}"></rect>
-                        <rect x="40" y="80" rx="2" ry="2" width="35" height="35" style="fill:{{cub.DB}}"></rect>
-                        <rect x="80" y="0" rx="2" ry="2" width="35" height="35" style="fill:{{cub.DFR}}"></rect>
-                        <rect x="80" y="40" rx="2" ry="2" width="35" height="35" style="fill:{{cub.DR}}"></rect>
-                        <rect x="80" y="80" rx="2" ry="2" width="35" height="35" style="fill:{{cub.DRB}}"></rect>
+                    <g transform="translate(78, 156)" style="stroke:black">
+                        <rect x="0" y="0" rx="1" ry="1" width="23" height="23" style="fill:{{cub.DLF}}"></rect>
+                        <rect x="0" y="25" rx="1" ry="1" width="23" height="23" style="fill:{{cub.DL}}"></rect>
+                        <rect x="0" y="50" rx="1" ry="1" width="23" height="23" style="fill:{{cub.DBL}}"></rect>
+                        <rect x="25" y="0" rx="1" ry="1" width="23" height="23" style="fill:{{cub.DF}}"></rect>
+                        <rect x="25" y="25" rx="1" ry="1" width="23" height="23" style="fill:{{cub.D}}"></rect>
+                        <rect x="25" y="50" rx="1" ry="1" width="23" height="23" style="fill:{{cub.DB}}"></rect>
+                        <rect x="50" y="0" rx="1" ry="1" width="23" height="23" style="fill:{{cub.DFR}}"></rect>
+                        <rect x="50" y="25" rx="1" ry="1" width="23" height="23" style="fill:{{cub.DR}}"></rect>
+                        <rect x="50" y="50" rx="1" ry="1" width="23" height="23" style="fill:{{cub.DRB}}"></rect>
                     </g>
                 </g>
             </svg>
         </div>
         <div class="col-xs-4 centered">
             <h4>Solves</h4>
-            <div class="table-responsive table-times">
+            <div class="table-responsive" id="table-times">
                 <table class="table table-hover table-condensed">
                     <thead>
                     <tr>
@@ -111,7 +135,14 @@
                         <td ng-bind="solve.displayTime"></td>
                         <td>DNF</td>
                         <td>DNF</td>
-                        <td><button class="btn btn-xs btn-warning" ng-click="removeSolve(solve)"><span class="glyphicon glyphicon-remove"></span></button></td>
+                        <td>
+                            <!--<div class="btn-group" role="group">-->
+                                <!--<button type="button" class="btn btn-xs btn-default">OK</button>-->
+                                <!--<button type="button" class="btn btn-xs btn-default">+2</button>-->
+                                <!--<button type="button" class="btn btn-xs btn-default">DNF</button>-->
+                            <!--</div>-->
+                            <button class="btn btn-xs btn-warning" ng-click="removeSolve(solve)"><span class="glyphicon glyphicon-remove"></span></button>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
