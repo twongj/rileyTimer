@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var multer = require('multer');
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/rileyTimer');
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
